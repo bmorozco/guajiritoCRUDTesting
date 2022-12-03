@@ -1,27 +1,53 @@
 # GuajiritosTest
+##### Autor: Betsy Martínez Orozco
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+##Descripción del proyecto
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1. tiene como **objetivo**:
+ - login/logout simple
+ - menú (navbar, sidebar) 
+ - listar un conjunto de usuarios 
+ - hacer un CRUD (insertar, editar, eliminar) de usuarios
+ - manejar las rutas por módulos
+ - consumir datos de una apiRest, estos se pueden ver aquí [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/)
+ - emplear [Angular Material](https://material.angular.io/guide)
+ 
+ ### Estructura del proyecto
+ ####Componentes:
+  - UserComponent
+  - UserDetailsComponent
+  - AdministrationComponent
+  - HomeHeaderComponent
+  - HomeSidebarComponent
+  - AppHomeComponent
+  - LoginComponent
+  - AppComponent
+ ####Módulos:
+  + SecurityModule (Manejar seguridad del proyecto)
+  + AppHomeModule (Home del proyecto)
+  + AdministrationModule (Administración de datos)
+ ####Servicios:
+  * UserService (Acciones sobre usuarios)
+  * LoginService (Entrada/Salida de la aplicaciónn)
+ ####Interface
+  - User (Clase usuario)
+  - Address (Dirección de los usuarios)
+  - Company (Compañía a la cual pertenece el usuario)
+  - Geo (Localización)
 
-## Development server
+## Servidor de desarrollo
+Correr`ng serve` para mostrar el sevirvidor de desarrollo. Navavegar a `http://localhost:4200/`. La aplicación se racargará automáticamente si existiera algún cambio en el código de un fichero.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Estructura de código
+Ejecutar `ng generate component component-name` para crear un componente nuevo. También se puede usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Code scaffolding
+## Construcción
+Ejecutar `ng build` para construir el  proyecto. Los artefactos creados se almacenan en la carpeta`dist/`. Usar `--prod` para una compilación de producción.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Realizar pruebas unitarias
+Ejecutar `ng test` para realizar pruebas unitarias via [Karma](https://karma-runner.github.io).
 
-## Build
+## Realizar pruebas end-to-end
+Ejecutar `ng e2e` para realizar pruebas end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Más ayuda
+Para obtener más ayuda acerca de Angular CLI usar `ng help` o revisar [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
