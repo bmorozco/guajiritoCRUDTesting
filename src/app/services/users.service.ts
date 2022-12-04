@@ -81,13 +81,13 @@ export class UsersService {
     );
   }
 
-  deleteUser(user: User | string): Observable<User> {
-    const id = typeof user === 'string' ? user : user.id;
+  deleteUser(user: User): Observable<User> {
+    const id = user.id;
     const url = `${this.usersURL}/${id}`;
     console.log(url);
     return this.http.delete<User>(url, httpOptions).pipe(
       tap(result => {
-        console.log(result);
+        console.log('result', result);
         console.log(`eliminado el usuario con id=${id}`);
       }),
       catchError(this.handleError<User>('deleteUser'))
