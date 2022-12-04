@@ -6,6 +6,8 @@ import {SecurityModule} from './security/security.module';
 import {CommonModule} from '@angular/common';
 import {AppHomeModule} from './app-home/app-home.module';
 import {AppRoutingModule} from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import {AppRoutingModule} from './app-routing.module';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     SecurityModule,
     AppHomeModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
