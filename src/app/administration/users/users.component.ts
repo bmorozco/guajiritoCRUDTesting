@@ -1,7 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/user';
 import {Subscription} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {UserDetailsComponent} from './user-details/user-details.component';
 
 @Component({
   selector: 'app-users',
@@ -10,11 +12,13 @@ import {Subscription} from 'rxjs';
 })
 export class UsersComponent implements OnInit, OnDestroy {
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService, private dialog: MatDialog) {
   }
 
   users: Array<User> = new Array<User>();
+  displayedColumns: string[] = ['name', 'username', 'company', 'email', 'phone', 'operations'];
   subscriptions: Array<Subscription> = new Array<Subscription>();
+
 
   ngOnInit() {
     this.getAllUsers();
@@ -99,13 +103,17 @@ export class UsersComponent implements OnInit, OnDestroy {
    * @param user dato del usuario a eliminar
    */
   deleteUser(user: User) {
-    const subscription = this.usersService.deleteUser(user.id).subscribe(
+    const subscription = this.usersService.deleteUser(user).subscribe(
       (userData) => {
-        console.log(userData);
-        this.users.filter(userR => userR.id !== user.id);
+        console.log('userData', userData);
+        const index = this.users.indexOf(user);
+        if (index > -1) {
+          this.users.splice(index, 1);
+        }
         console.log(this.users);
       }
     );
+    this.subscriptions.push(subscription);
   }
 
   /**
@@ -115,5 +123,18 @@ export class UsersComponent implements OnInit, OnDestroy {
   toucheUser(user: User) {
     console.log(user);
   }
+
+  seeUserDetails(user: User) {
+    const dialogRef = this.dialog.open(UserDetailsComponent, {
+      width: '50%',
+      data: {userToShow: user},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('cerrada vista de detalles de usuario');
+      console.log(result);
+    });
+  }
+
 }
 
