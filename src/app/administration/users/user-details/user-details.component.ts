@@ -99,6 +99,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
           this.fillAndSendData(userData);
         }
       );
+      this.subscriptions.push(subscription);
     } else { this.fillAndSendData(userData); }
   }
 
