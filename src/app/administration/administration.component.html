@@ -1,12 +1,13 @@
 <div class='container-fluid p-0 m-0'>
   <div class='row justify-content-center p-0 m-0'>
     <div class='col p-0 m-0'>
-      <nav>
-        <mat-card class="card-font-color">
-          <mat-card-content>Administración de usuarios</mat-card-content>
-          <button class="mat-button card-font-color-inverse" (click)="createUser()">Añadir</button>
-        </mat-card>
-      </nav>
+      <mat-toolbar color="primary">
+        <span>Administración de usuarios</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" matTooltip="Añadir un nuevo usuario" matTooltipPosition="below">
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </mat-toolbar>
       <router-outlet></router-outlet>
     </div>
   </div>
