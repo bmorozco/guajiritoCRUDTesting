@@ -61,11 +61,12 @@ export class UsersComponent implements OnInit, OnDestroy {
    * @param user dato del usuario  a añadir
    */
   addUser(user: User) {
+    console.log('addUser');
     const subscription = this.usersService.addUser(user).subscribe(
       (userR: User) => {
-        this.users.push(userR);
-        console.log(userR);
-        console.log(this.users);
+        // this.users.push(userR);
+        console.log('userR', userR);
+        console.log('this.users', this.users);
       }
     );
     this.subscriptions.push(subscription);
@@ -76,6 +77,7 @@ export class UsersComponent implements OnInit, OnDestroy {
    * @param user datos del Usuario a editar/actualizar
    */
   updateUser(user: User) {
+    console.log('update user');
     const index = this.users.findIndex(userData => userData.id === user.id);
     const subscription = this.usersService.updateUser(user).subscribe(
       (userR: User) => {
@@ -126,13 +128,55 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   seeUserDetails(user: User) {
     const dialogRef = this.dialog.open(UserDetailsComponent, {
-      width: '50%',
-      data: {userToShow: user},
+      width: 'auto',
+      data: {
+        userToShow: user,
+        editMode: false,
+        createMode: false,
+        viewMode: true
+      },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('cerrada vista de detalles de usuario');
+      console.log('cerrada vista de detalles de usuario, accion ver usuario');
       console.log(result);
+    });
+  }
+
+  editUserDetails(user: User) {
+    const dialogRef = this.dialog.open(UserDetailsComponent, {
+      width: 'auto',
+      data: {
+        userToShow: user,
+        editMode: true,
+        createMode: false,
+        viewMode: false
+      },
+    });
+
+    dialogRef.afterClosed().subscribe( (result: User) => {
+      console.log('cerrada vista de detalles de usuario, accion editar usuario');
+      console.log('usuario enviado', user);
+      console.log('usuario editado', result);
+      this.updateUser(result);
+    });
+  }
+
+  createUser(user: User) {
+    const dialogRef = this.dialog.open(UserDetailsComponent, {
+      width: 'auto',
+      data: {
+        userToShow: user,
+        editMode: false,
+        createMode: true,
+        viewMode: false
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: User) => {
+      console.log('cerrada vista de detalles de usuario, accion crear usuario');
+      console.log('datos del usuario creado', result);
+      this.addUser(result);
     });
   }
 

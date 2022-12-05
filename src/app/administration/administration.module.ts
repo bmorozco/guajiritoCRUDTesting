@@ -10,6 +10,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCommonModule} from '@angular/material/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [UsersComponent, AdministrationComponent, UserDetailsComponent],
@@ -22,7 +26,11 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     FormsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCommonModule,
+    MatTooltipModule,
+    MatGridListModule,
+    CommonModule
   ],
   exports: [UserDetailsComponent, UsersComponent],
   entryComponents: [UserDetailsComponent]

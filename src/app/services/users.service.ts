@@ -5,7 +5,9 @@ import {User} from '../models/user';
 import {catchError, tap} from 'rxjs/operators';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'Content-type': 'application/json; charset=UTF-8',
+  })
 };
 
 @Injectable(/*{
@@ -42,6 +44,9 @@ export class UsersService {
   //   }
   // }
 
+  /**
+   * Obteniendo todos los datos de usuarios del servidor
+   */
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersURL)
       .pipe(
@@ -53,30 +58,44 @@ export class UsersService {
       );
   }
 
-
+  /**
+   * Obtener datos del usuario especificado
+   * @param id ID del usuario a obtener
+   */
   getUser(id: string): Observable<User> {
     const url = `${this.usersURL}/${id}`;
-    console.log('id =' + id);
-    console.log(this.usersURL + '/' + id);
     return this.http.get<User>(url).pipe(
-      tap(_ => console.log(`getting user with id=${id}`)),
+      tap((user) => {
+        console.log(`obteniendo daots del usuario con id=${id}`);
+      }),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
+  /**
+   * Añadir un usuario
+   * @param user Datos del usuario a añadir
+   */
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersURL, user, httpOptions).pipe(
       tap((userR: User) => {
-        console.log(userR);
         console.log(`añadido el usuario con id=${userR.id}`);
       }),
       catchError(this.handleError<User>('addUser'))
     );
   }
 
+  /**
+   * Actualizar datos de un usuario
+   * @param user Datos del usuario a actualizar
+   */
   updateUser(user: User): Observable<User> {
-    return this.http.put(this.usersURL, user, httpOptions).pipe(
-      tap(_ => console.log(`actualizar usuario id=${user.id}`)),
+    const id = user.id;
+    const url = `${this.usersURL}/${id}`;
+    return this.http.put(url, user, httpOptions).pipe(
+      tap((userR: User) => {
+        console.log(`actualizar usuario con id=${user.id}`);
+      }),
       catchError(this.handleError<any>('updateUser'))
     );
   }
@@ -85,9 +104,8 @@ export class UsersService {
     const id = user.id;
     const url = `${this.usersURL}/${id}`;
     console.log(url);
-    return this.http.delete<User>(url, httpOptions).pipe(
+    return this.http.delete<User>(url).pipe(
       tap(result => {
-        console.log('result', result);
         console.log(`eliminado el usuario con id=${id}`);
       }),
       catchError(this.handleError<User>('deleteUser'))
