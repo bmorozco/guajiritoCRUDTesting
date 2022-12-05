@@ -29,7 +29,7 @@
     <input type="email" matInput  formControlName="email" [errorStateMatcher]="matcher"
            placeholder="Ex. pat@example.com">
     <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
-      Por favot introduzca un correo válido
+      Por favor introduzca un correo válido
     </mat-error>
     <mat-error *ngIf="form.get('email').hasError('required')">
       El correo es <strong>obligatorio</strong>
