@@ -40,13 +40,15 @@
       <td mat-cell *matCellDef="let user">
         <button mat-mini-fab color="primary" matSuffix (click)="seeUserDetails(user)"
                 matTooltip="Ver detalles del usuario"
-                matTooltipPosition="below">
+                matTooltipPosition="below"
+        class="margin-right-3">
           <mat-icon>remove_red_eye</mat-icon>
         </button>
 
         <button mat-mini-fab color="primary" matSuffix (click)="editUserDetails(user)"
                 matTooltip="Editar detalles del usuario"
-                matTooltipPosition="below">
+                matTooltipPosition="below"
+                class="margin-right-3">
           <mat-icon>edit</mat-icon>
 
         </button>

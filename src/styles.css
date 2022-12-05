@@ -1,2 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.button-spacing {
+  /*width: 100%;*/
+  margin-right: 4px;
+  margin-left: 4px;
+  width: auto;
+}
+
+.card-font-color {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.card-font-color-inverse {
+  background-color: white;
+  color: #3f51b5;
+}
+

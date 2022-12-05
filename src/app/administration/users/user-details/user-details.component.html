@@ -45,8 +45,8 @@
   </mat-grid-list>
 </div>
 <div mat-dialog-actions>
-  <button class="button-spacing" *ngIf="createMode || editMode" mat-button color="primary" matSuffix (click)="closeDialog()">Cancelar</button>
-  <button *ngIf="viewMode" mat-button color="primary" matSuffix (click)="closeDialog()">ok</button>
-  <button *ngIf="editMode" mat-button color="primary" matSuffix (click)="createOrEditUser()">Editar</button>
-  <button *ngIf="createMode" mat-button color="primary" matSuffix (click)="createOrEditUser()">Añadir</button>
+  <button class="button-spacing card-font-color" *ngIf="createMode || editMode" mat-button matSuffix (click)="closeDialog()">Cancelar</button>
+  <button class="card-font-color" *ngIf="viewMode" mat-button matSuffix (click)="closeDialog()">ok</button>
+  <button class="card-font-color" *ngIf="editMode" mat-button matSuffix (click)="createOrEditUser()">Editar</button>
+  <button class="card-font-color" *ngIf="createMode" mat-button matSuffix (click)="createOrEditUser()">Añadir</button>
 </div>
