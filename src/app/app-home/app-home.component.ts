@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-home.component.css']
 })
 export class AppHomeComponent implements OnInit {
+  showFiller = false;
 
   constructor() { }
 

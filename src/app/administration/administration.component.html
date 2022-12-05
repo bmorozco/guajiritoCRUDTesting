@@ -1,10 +1,10 @@
 <div class='container-fluid p-0 m-0'>
   <div class='row justify-content-center p-0 m-0'>
     <div class='col p-0 m-0'>
-      <mat-toolbar color="primary">
+      <mat-toolbar class="card-font-color-inverser">
         <span>Administración de usuarios</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon" matTooltip="Añadir un nuevo usuario" matTooltipPosition="below">
+        <button mat-icon-button class="example-icon card-font-color" matTooltip="Añadir un nuevo usuario" matTooltipPosition="below" (click)="createUser()">
           <mat-icon>person_add</mat-icon>
         </button>
       </mat-toolbar>
