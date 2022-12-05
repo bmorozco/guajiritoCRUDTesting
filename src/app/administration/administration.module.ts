@@ -14,6 +14,7 @@ import {MatCommonModule} from '@angular/material/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {CommonModule} from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [UsersComponent, AdministrationComponent, UserDetailsComponent],
@@ -30,7 +31,8 @@ import {CommonModule} from '@angular/common';
     MatCommonModule,
     MatTooltipModule,
     MatGridListModule,
-    CommonModule
+    CommonModule,
+    MatCardModule
   ],
   exports: [UserDetailsComponent, UsersComponent],
   entryComponents: [UserDetailsComponent]

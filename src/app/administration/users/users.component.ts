@@ -57,22 +57,6 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Añadir un nuevo usuario temporal a la lista ed usuarios obtenida del api
-   * @param user dato del usuario  a añadir
-   */
-  addUser(user: User) {
-    console.log('addUser');
-    const subscription = this.usersService.addUser(user).subscribe(
-      (userR: User) => {
-        // this.users.push(userR);
-        console.log('userR', userR);
-        console.log('this.users', this.users);
-      }
-    );
-    this.subscriptions.push(subscription);
-  }
-
-  /**
    * Actualizar los datos de un usuario de forma temporal en la lista de usuarios obtenida del api
    * @param user datos del Usuario a editar/actualizar
    */
@@ -159,24 +143,6 @@ export class UsersComponent implements OnInit, OnDestroy {
       console.log('usuario enviado', user);
       console.log('usuario editado', result);
       this.updateUser(result);
-    });
-  }
-
-  createUser(user: User) {
-    const dialogRef = this.dialog.open(UserDetailsComponent, {
-      width: 'auto',
-      data: {
-        userToShow: user,
-        editMode: false,
-        createMode: true,
-        viewMode: false
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result: User) => {
-      console.log('cerrada vista de detalles de usuario, accion crear usuario');
-      console.log('datos del usuario creado', result);
-      this.addUser(result);
     });
   }
 
