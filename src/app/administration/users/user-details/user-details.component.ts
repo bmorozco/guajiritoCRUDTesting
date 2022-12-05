@@ -27,6 +27,10 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.initData();
     this.initForm();
+
+    if (this.viewMode) {
+      this.form.disable();
+    }
   }
 
   ngOnDestroy(): void {
