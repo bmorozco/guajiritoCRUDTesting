@@ -34,23 +34,23 @@
       <td mat-cell *matCellDef="let user"> {{user.phone}} </td>
     </ng-container>
 
-    <!-- phone Column -->
+    <!-- operations Column -->
     <ng-container matColumnDef="operations">
       <th mat-header-cell *matHeaderCellDef> Operaciones </th>
       <td mat-cell *matCellDef="let user">
-        <button mat-fab color="primary" matSuffix (click)="seeUserDetails(user)"
+        <button mat-mini-fab color="primary" matSuffix (click)="seeUserDetails(user)"
                 matTooltip="Ver detalles del usuario"
                 matTooltipPosition="below">
           <mat-icon>remove_red_eye</mat-icon>
         </button>
 
-        <button mat-fab color="primary" matSuffix (click)="editUserDetails(user)"
+        <button mat-mini-fab color="primary" matSuffix (click)="editUserDetails(user)"
                 matTooltip="Editar detalles del usuario"
                 matTooltipPosition="below">
           <mat-icon>edit</mat-icon>
 
         </button>
-        <button mat-fab color="primary" matSuffix (click)="deleteUser(user)"
+        <button mat-mini-fab color="primary" matSuffix (click)="deleteUser(user)"
                 matTooltip="Eliminar usuario"
                 matTooltipPosition="below">
           <mat-icon fontIcon="delete_outline">delete</mat-icon>
