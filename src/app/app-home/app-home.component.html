@@ -1,13 +1,9 @@
 <mat-drawer-container>
   <mat-drawer #drawer class="example-sidenav card-font-color" mode="side">
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-description>
-          Administración
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
+    <button style="margin-top: 15px" mat-icon-button class="card-font-color-inverse" matTooltip="Administración"
+            matTooltipPosition="below">
+      <mat-icon>home</mat-icon>
+    </button>
 
   </mat-drawer>
   <mat-drawer-content>
@@ -21,8 +17,6 @@
         <mat-icon>exit_to_app</mat-icon>
       </button>
     </mat-toolbar>
-
-
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

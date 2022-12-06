@@ -9,7 +9,8 @@ import {Subscription} from 'rxjs';
 })
 export class AppHomeComponent implements OnInit, OnDestroy {
   subscriptions: Array<Subscription> = new Array<Subscription>();
-
+  menuExpandHelp = false;
+  menuExpandCategory = false;
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
