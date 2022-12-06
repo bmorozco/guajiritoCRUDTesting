@@ -1,5 +1,6 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
+import {AuthGuardGuard} from './services/auth-guard.guard';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'app', pathMatch: 'full'},
@@ -11,7 +12,8 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule],
-  declarations: []
+  declarations: [],
+  providers: []
 })
 export class AppRoutingModule {
 }

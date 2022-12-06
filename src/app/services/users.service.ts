@@ -18,31 +18,6 @@ export class UsersService {
   private usersURL = 'https://jsonplaceholder.typicode.com/users';
 
   constructor(private http: HttpClient) { }
-  //
-  // getAllUsers(): Observable<Array<User>> {
-  //   return of(this.users);
-  // }
-  //
-  // addUser(user: User) {
-  //   this.users.push(user);
-  // }
-  //
-  // editUser(userEdited: User) {
-  //
-  // }
-  //
-  // deleteUser(user?: User, id?: string, index?: string) {
-  //   let result = -1;
-  //   if (user || id) {
-  //     result = this.users.findIndex(value => value === user || value.id === id);
-  //   } else if (user && index) {
-  //     result = this.users.find( (user, index) => {
-  //
-  //     });
-  //   }
-  //   if (result !== -1) {
-  //   }
-  // }
 
   /**
    * Obteniendo todos los datos de usuarios del servidor

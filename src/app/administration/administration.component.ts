@@ -12,7 +12,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class AdministrationComponent implements OnInit, OnDestroy {
 
-  constructor(private usersService: UsersService, private dialog: MatDialog) {
+  constructor() {
   }
 
   subscriptions: Array<Subscription> = new Array<Subscription>();

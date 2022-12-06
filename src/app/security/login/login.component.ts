@@ -12,7 +12,7 @@ import {LoginService} from '../../services/login.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   matcher = new MyErrorStateMatcher();
-  subscriptions: Array<Subscription> = new Array<Subscription>();
+  error: string | null;
 
   constructor(private loginService: LoginService) { }
 
@@ -27,6 +27,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {}
+  login() {
+    if(this.form.value) {
+      const userName = this.form.get('username').value;
+      this.loginService.login(userName);
+    }
+  }
 
 }

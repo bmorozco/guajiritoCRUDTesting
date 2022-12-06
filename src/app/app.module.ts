@@ -8,6 +8,7 @@ import {AppHomeModule} from './app-home/app-home.module';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {AuthGuardGuard} from './services/auth-guard.guard';
 
 @NgModule({
   declarations: [
