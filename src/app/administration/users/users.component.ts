@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {User} from '../../models/user';
-import {Subscription} from 'rxjs';
+import {BehaviorSubject, Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {UserDetailsComponent} from './user-details/user-details.component';
 
@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   constructor(private usersService: UsersService, private dialog: MatDialog) {
   }
 
+  dataSource = new BehaviorSubject([]);
   users: Array<User> = new Array<User>();
   displayedColumns: string[] = ['name', 'username', 'company', 'email', 'phone', 'operations'];
   subscriptions: Array<Subscription> = new Array<Subscription>();
@@ -37,7 +38,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     const subscription = this.usersService.getUsers().subscribe(
       (users) => {
         this.users = users.slice();
-        console.log(this.users);
+        this.dataSource.next(this.users);
       }
     );
     this.subscriptions.push(subscription);
@@ -61,24 +62,24 @@ export class UsersComponent implements OnInit, OnDestroy {
    * @param user datos del Usuario a editar/actualizar
    */
   updateUser(user: User) {
-    console.log('update user');
     const index = this.users.findIndex(userData => userData.id === user.id);
     const subscription = this.usersService.updateUser(user).subscribe(
       (userR: User) => {
         // via 1
-        /*if (index !== -1) {
+        if (index !== -1) {
           this.users[index] = userR;
-        }*/
+        }
 
         // via 2
-        this.users = this.users.map(object => {
+        /*this.users = this.users.map(object => {
           if (object.id === userR.id) {
             // 👇️ change value of name property
             return {...object, userR};
           }
           return object;
-        });
-        console.log(this.users);
+        });*/
+        console.log('update user', this.users);
+        this.dataSource.next(this.users);
       }
     );
     this.subscriptions.push(subscription);
@@ -96,7 +97,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         if (index > -1) {
           this.users.splice(index, 1);
         }
-        console.log(this.users);
+        this.dataSource.next(this.users);
       }
     );
     this.subscriptions.push(subscription);
