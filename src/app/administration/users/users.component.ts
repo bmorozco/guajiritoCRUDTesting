@@ -57,6 +57,62 @@ export class UsersComponent implements OnInit, OnDestroy {
     return userData;
   }
 
+  createUser() {
+    const userData: User = {
+      address: {
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: ''
+      },
+      company: {
+        name: '',
+        catchPhrase: '',
+        bs: ''
+      },
+      email: '',
+      geo: {
+        lat: '',
+        lng: ''
+      },
+      id: '-1',
+      name: '',
+      phone: '',
+      username: '',
+      website: ''
+    };
+    const dialogRef = this.dialog.open(UserDetailsComponent, {
+      width: 'auto',
+      data: {
+        userToShow: userData,
+        editMode: false,
+        createMode: true,
+        viewMode: false
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: User) => {
+      console.log('cerrada vista de detalles de usuario, accion crear usuario');
+      console.log('datos del usuario creado', result);
+      this.addUser(result);
+    });
+  }
+
+  /**
+   * Añadir un nuevo usuario temporal a la lista ed usuarios obtenida del api
+   * @param user dato del usuario  a añadir
+   */
+  addUser(user: User) {
+    console.log('addUser');
+    const subscription = this.usersService.addUser(user).subscribe(
+      (userR: User) => {
+        this.users.push(userR);
+        this.dataSource.next(this.users);
+      }
+    );
+    this.subscriptions.push(subscription);
+  }
+
   /**
    * Actualizar los datos de un usuario de forma temporal en la lista de usuarios obtenida del api
    * @param user datos del Usuario a editar/actualizar

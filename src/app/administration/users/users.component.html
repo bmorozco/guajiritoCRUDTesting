@@ -1,3 +1,10 @@
+<mat-toolbar class="card-font-color-inverser">
+  <span>Administración de usuarios</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon card-font-color" matTooltip="Añadir un nuevo usuario" matTooltipPosition="below" (click)="createUser()">
+    <mat-icon>person_add</mat-icon>
+  </button>
+</mat-toolbar>
 <div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
