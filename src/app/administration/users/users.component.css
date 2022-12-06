@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+.margin-right-3 {
+  margin-right: 3px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

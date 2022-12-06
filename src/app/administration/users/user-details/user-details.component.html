@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Datos del usuario:  {{userToShow.name}}</h1>
+<div mat-dialog-content [formGroup]="form">
+  <mat-grid-list cols="3">
+  <mat-form-field appearance="fill" class="button-spacing">
+    <mat-label>Nombre</mat-label>
+    <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="form.get('name').hasError('required')">
+      El nombre es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="button-spacing">
+    <mat-label>Nombre de usuario</mat-label>
+    <input type="text" matInput formControlName="username" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="form.get('username').hasError('required')">
+      El nombre de usuario es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="button-spacing">
+    <mat-label>Compañía</mat-label>
+    <input type="text" matInput  formControlName="company" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="form.get('company').hasError('required')">
+      La compañía es <strong>obligatoria</strong>
+    </mat-error>
+  </mat-form-field>
+  </mat-grid-list>
+  <mat-grid-list cols="2">
+  <mat-form-field appearance="fill" class="button-spacing">
+    <mat-label>Correo</mat-label>
+    <input type="email" matInput  formControlName="email" [errorStateMatcher]="matcher"
+           placeholder="Ex. pat@example.com">
+    <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+      Por favor introduzca un correo válido
+    </mat-error>
+    <mat-error *ngIf="form.get('email').hasError('required')">
+      El correo es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="button-spacing">
+    <mat-label>Teléfono</mat-label>
+    <input type="tel" matInput formControlName="phone" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="form.get('phone').hasError('required')">
+      El teléfono es <strong>obligatorio</strong>
+    </mat-error>
+  </mat-form-field>
+  </mat-grid-list>
+</div>
+<div mat-dialog-actions>
+  <button class="button-spacing card-font-color" *ngIf="createMode || editMode" mat-button matSuffix (click)="closeDialog()">Cancelar</button>
+  <button class="card-font-color" *ngIf="viewMode" mat-button matSuffix (click)="closeDialog()">ok</button>
+  <button class="card-font-color" *ngIf="editMode" mat-button matSuffix (click)="createOrEditUser()">Editar</button>
+  <button class="card-font-color" *ngIf="createMode" mat-button matSuffix (click)="createOrEditUser()">Añadir</button>
+</div>
