@@ -65,20 +65,9 @@ export class UsersComponent implements OnInit, OnDestroy {
     const index = this.users.findIndex(userData => userData.id === user.id);
     const subscription = this.usersService.updateUser(user).subscribe(
       (userR: User) => {
-        // via 1
         if (index !== -1) {
           this.users[index] = userR;
         }
-
-        // via 2
-        /*this.users = this.users.map(object => {
-          if (object.id === userR.id) {
-            // 👇️ change value of name property
-            return {...object, userR};
-          }
-          return object;
-        });*/
-        console.log('update user', this.users);
         this.dataSource.next(this.users);
       }
     );
