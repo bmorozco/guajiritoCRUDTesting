@@ -39,9 +39,27 @@ export class UsersComponent implements OnInit, OnDestroy {
       (users) => {
         this.users = users.slice();
         this.dataSource.next(this.users);
-      }
+      }, (error => {
+        console.log(error);
+        console.log('error al obtener los usuarios del servidor');
+      })
     );
     this.subscriptions.push(subscription);
+  }
+
+  /**
+   * Aplicar filtros de busqueda a al tabla
+   * @param event
+   */
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    const result = this.users.filter((obj: User) => {
+      return (obj.name.toLowerCase().includes(filterValue) || obj.username.toLowerCase().includes(filterValue)
+        || obj.company.name.toLowerCase().includes(filterValue) || obj.phone.toLowerCase().includes(filterValue)
+        || obj.email.toLowerCase().includes(filterValue));
+    });
+    console.log(result);
+    this.dataSource.next(result);
   }
 
   /**

@@ -15,6 +15,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {CommonModule} from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [UsersComponent, AdministrationComponent, UserDetailsComponent],
@@ -32,8 +33,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTooltipModule,
     MatGridListModule,
     CommonModule,
-    MatToolbarModule
-  ],
+    MatToolbarModule,
+    MatPaginatorModule
+],
   exports: [UserDetailsComponent, UsersComponent],
   entryComponents: [UserDetailsComponent]
 })
