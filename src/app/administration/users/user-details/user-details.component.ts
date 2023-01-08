@@ -59,12 +59,12 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
       emailU = this.userToShow.email;
       phoneU = this.userToShow.phone;
     }
-    this.form = new FormGroup({
-      name: new FormControl(nameU, Validators.required),
-      username: new FormControl(userNameU, Validators.required),
-      company: new FormControl(companyU, Validators.required),
-      email: new FormControl(emailU, [Validators.required, Validators.email]),
-      phone: new FormControl(phoneU, Validators.required),
+    this.form = this.formBuilder.group({
+      name: [nameU, Validators.required],
+      username: [userNameU, Validators.required],
+      company: [companyU, Validators.required],
+      email: [emailU, [Validators.required, Validators.email]],
+      phone: [phoneU, Validators.required],
     });
   }
 
@@ -115,5 +115,15 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     userData.phone = this.form.get('phone').value;
     console.log('datos editados del usuario', userData);
     this.dialogRef.close(userData);
+  }
+
+  fillDataForm() {
+    this.form.patchValue({
+      nameU: this.userToShow.name,
+      userNameU: this.userToShow.username,
+      companyU: this.userToShow.company.name,
+      emailU: this.userToShow.email,
+      phoneU: this.userToShow.phone
+    });
   }
 }

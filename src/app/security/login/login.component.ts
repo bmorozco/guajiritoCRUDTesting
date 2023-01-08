@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MyErrorStateMatcher} from '../../models/my-error-state-matcher';
 import {Subscription} from 'rxjs';
 import {LoginService} from '../../services/login.service';
@@ -14,21 +14,22 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   error: string | null;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm() {
-    this.form = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   login() {
-    if(this.form.value) {
+    if (this.form.value) {
       const userName = this.form.get('username').value;
       this.loginService.login(userName);
     }
